@@ -23,7 +23,7 @@ namespace Prog3Final.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            var algo = "nose";
             return View();
         }
     }
