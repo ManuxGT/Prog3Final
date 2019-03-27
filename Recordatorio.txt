@@ -1,0 +1,22 @@
+Git commands
+git status -> Status
+git commit -m "titulos" -> hacer commit
+git checkout
+git checkout master -> cambia rmaster
+git checkout master
+git merge dawich -> cambios de dawich a Master
+
+[Data anotation]
+salidas de empleados
+
+cambiar el status a inactivo...
+Se buscara por codigo
+
+Vacaciones
+por codigo
+
+Permisos
+por codigo
+
+Licencias
+por codigos
