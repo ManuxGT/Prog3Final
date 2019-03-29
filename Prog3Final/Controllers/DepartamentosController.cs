@@ -40,7 +40,9 @@ namespace Prog3Final.Controllers
         public ActionResult Create()
         {
             ViewBag.Encargado = new SelectList(db.Empleados, "Id", "Codigo");
+           
             return View();
+            
         }
 
         // POST: Departamentos/Create
@@ -48,17 +50,34 @@ namespace Prog3Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,Codigo,Nombre,Encargado")] Departamento departamento)
+        public ActionResult Create([Bind(Include = "id,Codigo,Nombre")] Departamento departamento)
         {
-            if (ModelState.IsValid)
-            {
-                db.Departamentos.Add(departamento);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            
+             if (ModelState.IsValid)
+             {
+                try
+                {
 
-            ViewBag.Encargado = new SelectList(db.Empleados, "Id", "Codigo", departamento.Encargado);
-            return View(departamento);
+                    string CodigoEncargado = Request.Form["Encargado"];
+                    var EncargadoDep = db.Empleados.Where(m => m.Codigo == CodigoEncargado).First();
+                    int IdEncargado = EncargadoDep.Id;
+                    departamento.Encargado = IdEncargado;
+                    db.Departamentos.Add(departamento);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                catch
+                {
+                    
+                }
+               
+                 
+             }
+            ViewBag.NoResultados = "No hay ningún empleado con este código";
+             ViewBag.Encargado = new SelectList(db.Empleados, "Id", "Codigo", departamento.Encargado);
+             return View(departamento);
+             
         }
 
         // GET: Departamentos/Edit/5
@@ -82,14 +101,27 @@ namespace Prog3Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,Codigo,Nombre,Encargado")] Departamento departamento)
+        public ActionResult Edit([Bind(Include = "id,Codigo,Nombre")] Departamento departamento)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(departamento).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    string CodigoEncargado = Request.Form["Encargado"];
+                    var EncargadoDep = db.Empleados.Where(m => m.Codigo == CodigoEncargado).First();
+                    int IdEncargado = EncargadoDep.Id;
+                    departamento.Encargado = IdEncargado;
+                    db.Entry(departamento).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+
+                }
+                
             }
+            ViewBag.NoResultados = "No hay ningún empleado con este código";
             ViewBag.Encargado = new SelectList(db.Empleados, "Id", "Codigo", departamento.Encargado);
             return View(departamento);
         }
