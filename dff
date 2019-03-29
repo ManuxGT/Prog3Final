@@ -1,0 +1,29 @@
+[33mcommit 5c2f83bf114cd30f99864e46750ff5401ed5aa1a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Dawich Rafael <dawichelo@gmail.com>
+Date:   Tue Mar 26 23:54:29 2019 -0400
+
+    agregue we are the champions
+
+[33mcommit 4d2ec5ea764c2e50e43606846f254933c3508f89[m
+Author: ManuxGT <imccs05@hotmail.com>
+Date:   Tue Mar 26 23:41:42 2019 -0400
+
+    Prueba
+
+[33mcommit 7df5ff3bc6f28ac71f5d6b659afae00aba46448a[m[33m ([m[1;31morigin/Ivan[m[33m, [m[1;31morigin/Dawich[m[33m, [m[1;32mIvan[m[33m, [m[1;32mDawich[m[33m)[m
+Author: ManuxGT <imccs05@hotmail.com>
+Date:   Tue Mar 26 23:21:02 2019 -0400
+
+    Proyecto creado y Entity Framework agregado (Usando DBFirst)
+
+[33mcommit 1c004d428ef4157346d8ba1b2eebe4e446d4842a[m
+Author: ManuxGT <imccs05@hotmail.com>
+Date:   Tue Mar 26 23:16:14 2019 -0400
+
+    Add project files.
+
+[33mcommit 0d06bf085d0092e8e14f94fab19daf98b6605ab8[m
+Author: ManuxGT <imccs05@hotmail.com>
+Date:   Tue Mar 26 23:16:00 2019 -0400
+
+    Add .gitignore and .gitattributes.
