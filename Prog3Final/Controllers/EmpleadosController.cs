@@ -39,7 +39,7 @@ namespace Prog3Final.Controllers
         // GET: Empleados/Create
         public ActionResult Create()
         {
-            //ViewBag.Cargo = new SelectList(db.Cargos, "Id", "Codigo");
+            ViewBag.Cargo = new SelectList(db.Cargos, "Id", "Codigo");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace Prog3Final.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.Cargo = new SelectList(db.Cargos, "Id", "Codigo", empleado.Cargo);
+            ViewBag.Cargo = new SelectList(db.Cargos, "Id", "Codigo", empleado.Cargo);
             return View(empleado);
         }
 

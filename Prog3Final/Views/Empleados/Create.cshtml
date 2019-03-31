@@ -66,11 +66,11 @@
             @Html.LabelFor(model => model.Departamento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.Departamento, new List<SelectListItem>{
-                    new SelectListItem {Text="DepartamentoX", Value="DepartamentoX",Selected=true},
-                    new SelectListItem { Text="DepartamentoX", Value="DepartamentoX"},
-                    new SelectListItem { Text="DepartamentoX", Value="DepartamentoX"},
-                    new SelectListItem { Text="DepartamentoX", Value="DepartamentoX"},
-                    new SelectListItem { Text="DepartamentoX", Value="DepartamentoX"}
+                    new SelectListItem {Text="Recursos Humanos", Value="2",Selected=true},
+                    new SelectListItem { Text="Tecnología de la Información", Value="3"},
+                    new SelectListItem { Text="Contabilidad", Value="4"},
+                    new SelectListItem { Text="Administración", Value="5"},
+                    new SelectListItem { Text="Servicio al Cliente", Value="6"}
                 }, new { style="margin-top:5px"})
                 @Html.ValidationMessageFor(model => model.Departamento, "", new { @class = "text-danger" })
             </div>
@@ -80,11 +80,13 @@
             @Html.LabelFor(model => model.Cargo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.Cargo, new List<SelectListItem>{
-                    new SelectListItem {Text="CargoX", Value="Cargo",Selected=true},
-                    new SelectListItem { Text="CargoX", Value="Cargo"},
-                    new SelectListItem { Text="Cargo", Value="Cargp"},
-                    new SelectListItem { Text="Cargo", Value="Cargo"},
-                    new SelectListItem { Text="Cargo", Value="Cargo"}
+                    new SelectListItem {Text="Jefe de Departamento", Value="1",Selected=true},
+                    new SelectListItem { Text="Supervisor", Value="2"},
+                    new SelectListItem { Text="Gerente", Value="3"},
+                    new SelectListItem { Text="Secretario", Value="4"},
+                    new SelectListItem { Text="Empleado Novato", Value="5"},
+                    new SelectListItem { Text="Empleado Experimentado", Value="6"},
+                  
                 }, new { style="margin-top:5px"})
                 @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
             </div>
