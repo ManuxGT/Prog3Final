@@ -18,8 +18,60 @@ namespace Prog3Final.Controllers
         public ActionResult Index()
         {
             var empleados = db.Empleados.Include(e => e.Cargo1);
+ 
             return View(empleados.ToList());
         }
+
+        [HttpPost]
+        public ActionResult Index(string nombre, string apellido, string departamento)
+        {
+            if (nombre!="" && apellido != "" && departamento=="Ninguno")
+            {
+
+                var empleados = db.Empleados.Where(d=> d.Nombre==nombre && d.Apellido==apellido);
+                return View(empleados.ToList());
+
+            }else if (nombre =="" && apellido!= "" && departamento=="Ninguno")
+            {
+
+                var empleados = db.Empleados.Where(d =>d.Apellido == apellido);
+                return View(empleados.ToList());
+
+            } else if (nombre =="" && apellido == "" && departamento != "Ninguno")
+            {
+                var empleados = db.Empleados.Where(d => d.Departamento == Convert.ToInt32(departamento));
+                return View(empleados.ToList());
+            }
+            else if (nombre!="" && apellido =="" && departamento!="Ninguno")
+            {
+
+                var empleados = db.Empleados.Where(d => d.Departamento == Convert.ToInt32(departamento) && d.Nombre==nombre);
+                return View(empleados.ToList());
+
+            }else if(nombre == "" && apellido != "" && departamento != "Ninguno"){
+
+                var empleados = db.Empleados.Where(d => d.Departamento == Convert.ToInt32(departamento) && d.Apellido == apellido);
+                return View(empleados.ToList());
+
+            }else if (nombre!="" && apellido=="" && departamento =="Ninguno")
+            {
+                var empleados = db.Empleados.Where(d =>d.Nombre == nombre);
+                return View(empleados.ToList());
+            }
+            else
+            {
+                ViewBag.NoHay = "Complete los campos antes de iniciar la busqueda";
+                
+
+                return View(db.Empleados.ToList());
+            }
+
+
+
+            
+        }
+
+
 
         // GET: Empleados/Details/5
         public ActionResult Details(int? id)
@@ -120,6 +172,32 @@ namespace Prog3Final.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Entrada()
+        {
+
+            return View(db.Empleados.ToList());
+        }
+
+
+        [HttpPost]
+        public ActionResult Entrada(string mes)
+        {
+            if (mes != "Ninguno")
+            {
+                int Mes = Convert.ToInt32(mes);
+
+                return View(db.Empleados.Where(d => d.FechaIngreso.Month == Mes).ToList());
+            }
+            else
+            {
+                ViewBag.ErrorPerezGuzman = "Seleccione el mes";
+                return View(db.Empleados.ToList());
+            }
+
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

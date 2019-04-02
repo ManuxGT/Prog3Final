@@ -18,6 +18,26 @@ namespace Prog3Final.Controllers
             return View(db.SalidaEmpleados.ToList());
         }
 
+
+        [HttpPost]
+        public ActionResult Index(string mes)
+        {
+            if (mes!="Ninguno")
+            {
+                int Mes = Convert.ToInt32(mes);
+
+                return View(db.SalidaEmpleados.Where(d => d.FechaSalida.Month == Mes).ToList());
+            }
+            else
+            {
+                ViewBag.ErrorPerezGuzman = "Seleccione el mes";
+                return View(db.SalidaEmpleados.ToList());
+            }
+            
+        }
+
+
+
         // GET: Salida/Details/5
         public ActionResult Details(int? id)
         {

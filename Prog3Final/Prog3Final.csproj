@@ -250,6 +250,7 @@
     <Content Include="Views\Cargos\Index.cshtml" />
     <Content Include="Views\Salida\Index.cshtml" />
     <Content Include="Views\Salida\Create.cshtml" />
+    <Content Include="Views\Empleados\Entrada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
