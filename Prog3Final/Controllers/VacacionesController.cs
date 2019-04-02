@@ -46,9 +46,7 @@ namespace Prog3Final.Controllers
                 return RedirectToAction("Index");
             }
             catch
-            {
-               
-            }
+            {}
             ViewBag.NoResultados = "No hay ningún empleado con este código";
             return View();
         }
