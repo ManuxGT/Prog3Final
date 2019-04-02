@@ -50,10 +50,8 @@ namespace Prog3Final.Controllers
                 db.Entry(EmpleadoStatus).State = EntityState.Modified;
                 db.SalidaEmpleados.Add(salida);
                 db.SaveChanges();
- 
-                return RedirectToAction("Index");
-
-                 
+               return RedirectToAction("Index");
+              
             }
             catch { }
             ViewBag.NoResultados = "No hay ningún empleado con este código";
