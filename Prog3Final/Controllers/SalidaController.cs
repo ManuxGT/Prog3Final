@@ -45,7 +45,6 @@ namespace Prog3Final.Controllers
                 int IdSalida = EmpleadoSalida.Id;
                 Empleado EmpleadoStatus = db.Empleados.Where(m => m.estatus == "Activo" && m.Id == salida.IdEmpleado).First();
                 EmpleadoStatus.estatus = "Inactivo";
-
                 salida.IdEmpleado = IdSalida;
                 db.Entry(EmpleadoStatus).State = EntityState.Modified;
                 db.SalidaEmpleados.Add(salida);
