@@ -112,8 +112,7 @@
             @Html.LabelFor(model => model.estatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.estatus, new List<SelectListItem>{
-                   new SelectListItem {Text="Activo", Value="Activo",Selected=true},
-                   new SelectListItem { Text="Inactivo", Value="Inactivo"},
+                   new SelectListItem {Text="Activo", Value="Activo",Selected=true}
                    
                }, new { style="margin-top:5px"})
             </div>

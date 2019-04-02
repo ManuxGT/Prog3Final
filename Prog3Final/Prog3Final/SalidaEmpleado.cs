@@ -11,16 +11,27 @@ namespace Prog3Final
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Vacacione
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class SalidaEmpleado
     {
+
         public int Id { get; set; }
+    
+        [Required(ErrorMessage ="Se necesita el Codigo del empleado")]
         public int IdEmpleado { get; set; }
-        public System.DateTime Desde { get; set; }
-        public System.DateTime Hasta { get; set; }
-        public int Año { get; set; }
-        public string Comentarios { get; set; }
+
+        [Required(ErrorMessage = "Se necesita el tipo de salida")]
+        public string TipoSalida { get; set; }
+
+        public string Motivo { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Se necesita la fecha de salida")]
+        public  DateTime FechaSalida { get; set; }
     
         public virtual Empleado Empleado { get; set; }
     }
+
+ 
 }
