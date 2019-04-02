@@ -6,49 +6,51 @@ using System.Web.Mvc;
 
 namespace Prog3Final.Controllers
 {
-    public class VacacionesController : Controller
+    public class LicenciasController : Controller
     {
-        private DBRecursosHumanos db = new DBRecursosHumanos();
-
-        // GET: Vacaciones
+        private DBRecursosHumanos db = new DBRecursosHumanos(); 
+        // GET: Licencias
         public ActionResult Index()
         {
-            return View(db.Vacaciones.ToList());
+            return View(db.Licencias.ToList());
         }
 
-        // GET: Vacaciones/Details/5
+        // GET: Licencias/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Vacaciones/Create
+        // GET: Licencias/Create
         public ActionResult Create()
         {
-            ViewBag.Vacaciones = new SelectList(db.Empleados, "Id", "Codigo");
             return View();
         }
 
-        // POST: Vacaciones/Create
-        [HttpPost]
+        // POST: Licencias/Create
+        [HttpPost] 
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Vacacione vacaciones)
+        public ActionResult Create(Licencia licencia)
         {
             try
             {
                 int CodigoEmpleado = Convert.ToInt32(Request.Form["IdEmpleado"]);
                 var EmpleadoSalida = db.Empleados.Where(m => m.Id == CodigoEmpleado && m.estatus == "Activo").First();
-
-                int IdSalida =  EmpleadoSalida.Id;
-                vacaciones.IdEmpleado = IdSalida;
-                db.Vacaciones.Add(vacaciones);
+                int IdSalida = EmpleadoSalida.Id;
+                licencia.IdEmpleado = IdSalida;
+                db.Licencias.Add(licencia);
                 db.SaveChanges();
+
+
                 return RedirectToAction("Index");
             }
-            catch { }
+            catch
+            {
+            }
             ViewBag.NoResultados = "No hay ningún empleado con este código";
             return View();
         }
 
+      
     }
 }
