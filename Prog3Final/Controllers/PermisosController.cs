@@ -2,60 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 using System.Web.Mvc;
-using System.Net;
+
 namespace Prog3Final.Controllers
 {
-    public class SalidaController : Controller
-    { 
-        private DBRecursosHumanos db= new DBRecursosHumanos();
+    public class PermisosController : Controller
+    {
+        private DBRecursosHumanos db = new DBRecursosHumanos();
 
-        // GET: Salida
+        // GET: Permisos
         public ActionResult Index()
         {
-            return View(db.SalidaEmpleados.ToList());
+            return View(db.Permisos.ToList());
         }
 
-        // GET: Salida/Details/5
-        public ActionResult Details(int? id)
+        // GET: Permisos/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Salida/Edit/5
-        public ActionResult Create(int? id)
+        // GET: Permisos/Create
+        public ActionResult Create()
         {
             ViewBag.Encargado = new SelectList(db.Empleados, "Id", "Codigo");
-            return View( );
+            return View();
         }
 
-        // POST: Salida/Edit/5
+        // POST: Permisos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(SalidaEmpleado salida)
+        public ActionResult Create(Permiso permiso)
         {
             try
             {
-       
                 int CodigoEmpleado = Convert.ToInt32(Request.Form["IdEmpleado"]);
                 var EmpleadoSalida = db.Empleados.Where(m => m.Id == CodigoEmpleado && m.estatus == "Activo").First();
-    
-
                 int IdSalida = EmpleadoSalida.Id;
-                Empleado EmpleadoStatus = db.Empleados.Where(m => m.estatus == "Activo" && m.Id == salida.IdEmpleado).First();
-                EmpleadoStatus.estatus = "Inactivo";
-                salida.IdEmpleado = IdSalida;
-                db.Entry(EmpleadoStatus).State = EntityState.Modified;
-                db.SalidaEmpleados.Add(salida);
+                permiso.IdEmpleado = IdSalida;
+                db.Permisos.Add(permiso);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-            catch { }
+            catch
+            {
+           
+            }
             ViewBag.NoResultados = "No hay ningún empleado con este código";
             return View();
         }
-
-     
     }
 }

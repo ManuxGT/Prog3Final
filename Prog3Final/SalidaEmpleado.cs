@@ -25,6 +25,7 @@ namespace Prog3Final
         public string TipoSalida { get; set; }
 
         public string Motivo { get; set; }
+
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Se necesita la fecha de salida")]
         public  DateTime FechaSalida { get; set; }

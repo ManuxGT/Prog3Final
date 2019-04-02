@@ -1,20 +1,21 @@
-﻿@model Prog3Final.SalidaEmpleado
+﻿@model  Prog3Final.SalidaEmpleado
 
 @{
     ViewBag.Title = "Create";
-}
 
+}
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SalidaEmpleado</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
             @Html.LabelFor(model => model.IdEmpleado, "IdEmpleado", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -31,7 +32,7 @@
                     new SelectListItem { Text="Renuncia", Value="Renuncia",Selected=true },
                     new SelectListItem { Text="Desahucio", Value="Desahucio"},
                     new SelectListItem { Text="Despido", Value="Despido"}
-                }, new { style = "margin-top:5px" })       
+                }, new { style = "margin-top:5px" })
                 @Html.ValidationMessageFor(model => model.TipoSalida, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,11 +60,7 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
+ 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
