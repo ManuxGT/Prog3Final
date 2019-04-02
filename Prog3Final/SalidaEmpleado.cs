@@ -31,4 +31,6 @@ namespace Prog3Final
     
         public virtual Empleado Empleado { get; set; }
     }
+
+ 
 }
