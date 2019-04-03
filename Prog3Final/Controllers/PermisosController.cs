@@ -3,17 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 
 namespace Prog3Final.Controllers
 {
     public class PermisosController : Controller
     {
         private DBRecursosHumanos db = new DBRecursosHumanos();
-
-        // GET: Permisos
-        public ActionResult Index()
+ 
+        public ActionResult Index(string Busqueda, string valor)
         {
+         
+
+            if (Busqueda == "IdEmpleado")
+            {
+                int d = 0;
+                if (!valor.IsEmpty())
+                {
+                    d = int.Parse(valor);
+                }
+                
+                return View(db.Permisos.Where(m => m.IdEmpleado == d ).ToList());
+            }
+            else {
+       
             return View(db.Permisos.ToList());
+            }
         }
 
         // GET: Permisos/Details/5

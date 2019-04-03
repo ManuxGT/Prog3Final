@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Prog3Final.Permiso>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de permisos</h2>
+
+<p>
+    @using (Html.BeginForm("Index", "Permisos", FormMethod.Get))
+    {
+        <h3 class="modal-title">Busquedas</h3>
+
+        <b>Busqueda por:</b>
+        @Html.RadioButton("Busqueda", "IdEmpleado", true) <text>Id Empleado</text>
+        @Html.TextBox("valor")
+        <input type="submit" value="Buscar" />
+
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hasta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.Codigo)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td class="text-danger">No hay resultados con este valor</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEmpleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desde)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hasta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comentarios)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleado.Codigo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+    </table>
