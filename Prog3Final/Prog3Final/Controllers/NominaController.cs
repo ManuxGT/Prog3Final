@@ -75,6 +75,7 @@ namespace Prog3Final.Controllers
                         valor = "0";
                         break;
                 }
+                
                 return View(db.Nominas.Where(x => x.Mes == d).ToList());
             }
             else 
@@ -85,9 +86,12 @@ namespace Prog3Final.Controllers
                 }
                 else
                 {
-                    valor = "2019";
+                    valor = "0";
                 }
-                return View(db.Nominas.Where(x => x.Año == d).ToList());
+
+                if (valor == "0") return View(db.Nominas.ToList());
+
+                else return View(db.Nominas.Where(x => x.Año == d).ToList());
             }
         }
  
