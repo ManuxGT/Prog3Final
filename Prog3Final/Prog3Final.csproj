@@ -260,6 +260,7 @@
     <Content Include="Views\Nomina\VistaNomina.cshtml" />
     <Content Include="Views\Nomina\Index.cshtml" />
     <Content Include="Views\Permisos\Index.cshtml" />
+    <Content Include="Views\Licencias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
