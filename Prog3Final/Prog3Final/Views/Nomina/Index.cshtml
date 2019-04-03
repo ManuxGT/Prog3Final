@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Prog3Final.Nomina>
+
+@{
+    ViewBag.Title = "Calculo de nominas";
+}
+
+ 
+
+<p>
+    @using (Html.BeginForm("Index", "Nomina", FormMethod.Get))
+    {
+        <h3 class="modal-title">Busquedas</h3>
+
+        <b>Busqueda por:</b>
+        @Html.RadioButton("Busqueda", "Año",true) <text>Año</text>
+        @Html.RadioButton("Busqueda", "Mes") <text>Mes</text>
+        @Html.TextBox("valor")
+        <input type="submit" value="Buscar" />
+
+    }
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Año)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td class="text-danger">No hay resultados con este valor</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Año)
+                </td>
+                <td>
+                    @switch (item.Mes)
+                    {
+                        case 1:
+                            <p>Enero</p>
+                            break;
+                        case 2:
+                            <p>Febrero</p>
+                            break;
+                        case 3:
+                            <p>Marzo</p>
+                            break;
+                        case 4:
+                            <p>Abril</p>
+                            break;
+                        case 5:
+                            <p>Mayo</p>
+                            break;
+                        case 6:
+                            <p>Junio</p>
+                            break;
+                        case 7:
+                            <p>Julio</p>
+                            break;
+                        case 8:
+                            <p>Agosto</p>
+                            break;
+                        case 9:
+                            <p>Septiembre</p>
+                            break;
+                        case 10:
+                            <p>Octubre</p>
+                            break;
+                        case 11:
+                            <p>Noviembre</p>
+                            break;
+                        case 12:
+                            <p>Diciembre</p>
+                            break;
+
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoTotal)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    }
+</table>
