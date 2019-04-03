@@ -80,14 +80,21 @@ namespace Prog3Final.Controllers
             }
             else 
             {
-                if (!valor.IsEmpty())
-                {
-                    d = int.Parse(valor);
+                try {
+                    if (!valor.IsEmpty())
+                    {
+                        d = int.Parse(valor);
+                    }
+                    else
+                    {
+                        valor = "0";
+                    }
                 }
-                else
+                catch
                 {
-                    valor = "0";
+
                 }
+              
 
                 if (valor == "0") return View(db.Nominas.ToList());
 
