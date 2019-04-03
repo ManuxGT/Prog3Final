@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Prog3Final.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<form action="Entrada" method="post">
+
+    @Html.DropDownList("mes", new List<SelectListItem>{
+                    new SelectListItem{Text ="Mes", Value="Ninguno",Selected=true },
+                    new SelectListItem {Text="Enero", Value="1"},
+                    new SelectListItem { Text="Febrero", Value="2"},
+                    new SelectListItem { Text="Marzo", Value="3"},
+                    new SelectListItem { Text="Abril", Value="4"},
+                    new SelectListItem { Text="Mayo", Value="5"},
+                    new SelectListItem { Text="Junio", Value="6"},
+                    new SelectListItem { Text="Julio", Value="7"},
+                    new SelectListItem { Text="Agosto", Value="8"},
+                    new SelectListItem { Text="Septiembre", Value="9"},
+                    new SelectListItem { Text="Octubre", Value="10"},
+                    new SelectListItem { Text="Noviembre", Value="11"},
+                    new SelectListItem { Text="Diciembre", Value="12"},
+                }, new { @class="form-control" ,style= "margin-top:5px;display:inline" })
+
+    <input type="submit" name="Enviar" value="Buscar" class="btn" style="display:inline" />
+
+
+</form>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+
+
+            <th>
+                @Html.DisplayName("Fecha de Ingreso")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.estatus == "Activo")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaIngreso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salario)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.estatus)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        @Html.ActionLink("Inactivar", "Create", "Salida")
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+
+
+}
+else
+{
+    <h5 stlye="margin:auto">No se encontraton resultados</h5>
+}

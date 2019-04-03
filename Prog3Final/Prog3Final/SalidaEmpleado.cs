@@ -25,7 +25,10 @@ namespace Prog3Final
         public string TipoSalida { get; set; }
 
         public string Motivo { get; set; }
+<<<<<<< HEAD:Prog3Final/Prog3Final/SalidaEmpleado.cs
 
+=======
+>>>>>>> Ivan:Prog3Final/SalidaEmpleado.cs
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Se necesita la fecha de salida")]
         public  DateTime FechaSalida { get; set; }
