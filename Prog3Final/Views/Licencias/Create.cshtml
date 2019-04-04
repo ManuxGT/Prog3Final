@@ -20,7 +20,7 @@
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.IdEmpleado, (SelectList)ViewBag.PersonList, new { @class = "btn btn-success dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.IdEmpleado, "", new { @class = "text-danger" })
-                <h6 class="text-danger">@ViewBag.NoResultados</h6>
+           
             </div>
         </div>
 
