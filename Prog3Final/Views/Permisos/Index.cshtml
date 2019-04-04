@@ -9,17 +9,20 @@
 <p>
     @using (Html.BeginForm("Index", "Permisos", FormMethod.Get))
     {
-        <h3 class="modal-title">Busquedas</h3>
-
-        <b>Busqueda por:</b>
-        @Html.RadioButton("Busqueda", "IdEmpleado", true) <text>Id Empleado</text>
-        @Html.TextBox("valor")
-        <input type="submit" value="Buscar" />
+        <h3 class="modal-title">Busquedas</h3> <br />
+        <div class="btn-group btn-group-toggle" style="padding-left:30%">
+            <label class="btn btn-primary active">
+                @Html.RadioButton("Busqueda", "IdEmpleado", true)Id Empleado
+            </label>
+            @Html.TextBox("valor")
+        </div>
+        <input type="submit" value="Buscar" class="btn btn-success" />
+        <button type="button" class="btn btn-light" onclick="location.href='@Url.Action("Index","Permisos")'">Limpiar</button>
 
     }
 </p>
-<table class="table">
-    <tr>
+<table class="table table-bordered">
+    <tr class="btn-primary">
         <th>
             @Html.DisplayNameFor(model => model.IdEmpleado)
         </th>
@@ -35,7 +38,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Empleado.Codigo)
         </th>
-        <th></th>
     </tr>
     @if (Model.Count() == 0)
     {
@@ -48,7 +50,7 @@
         foreach (var item in Model)
         {
 
-            <tr>
+            <tr class="table-actives" >
                 <td>
                     @Html.DisplayFor(modelItem => item.IdEmpleado)
                 </td>
@@ -64,11 +66,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Empleado.Codigo)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+ 
             </tr>
         }
     }
