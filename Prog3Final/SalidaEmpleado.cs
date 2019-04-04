@@ -18,7 +18,9 @@ namespace Prog3Final
 
         public int Id { get; set; }
     
+        
         [Required(ErrorMessage ="Se necesita el Codigo del empleado")]
+
         public int IdEmpleado { get; set; }
 
         [Required(ErrorMessage = "Se necesita el tipo de salida")]

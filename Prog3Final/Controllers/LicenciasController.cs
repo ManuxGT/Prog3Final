@@ -24,6 +24,7 @@ namespace Prog3Final.Controllers
         // GET: Licencias/Create
         public ActionResult Create()
         {
+            ViewBag.PersonList = new SelectList(db.Empleados.Where(m => m.estatus == "Activo"), "Id", "Nombre");
             return View();
         }
 

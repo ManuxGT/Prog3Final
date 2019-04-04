@@ -40,7 +40,7 @@ namespace Prog3Final.Controllers
         // GET: Permisos/Create
         public ActionResult Create()
         {
-            ViewBag.Encargado = new SelectList(db.Empleados, "Id", "Codigo");
+            ViewBag.PersonList = new SelectList(db.Empleados.Where(m => m.estatus == "Activo"), "Id", "Nombre");
             return View();
         }
 
