@@ -8,7 +8,9 @@
     <h2 class="title text-center">Lista de los empleados activos</h2>
 
     <br /><br />
-    <form action="Index" method="post">
+
+    @using (Html.BeginForm("Index", "Empleados", FormMethod.Get))
+    {
 
         @Html.TextBox("nombre", "", new { @class = "form-control", @placeholder = "Nombre", style = "margin-left:2rem;display:inline-block;border: 1px solid black;width:23%" })
         @Html.TextBox("apellido", "", new { @class = "form-control", @placeholder = "Apellido", style = "margin-left:2rem;display:inline-block;border: 1px solid black;width:23%" })
@@ -22,20 +24,17 @@
                     }, new { @class= "form-control",style= "display:inline-block;width:28%;margin-left:2rem;border:1px solid black" })
 
 
-        <input style="margin-left:2rem;display:inline-block;width:9%;" class ="btn btn-default" type="submit" name="Enviar" value="Buscar" />
+        <input style="margin-left:2rem;display:inline-block;width:9%;" class="btn btn-default" type="submit" name="Enviar" value="Buscar" />
         <p class="text-danger">@ViewBag.ErrorPerezGuzman</p>
-
-
-
-    </form>
+    }
 
     <br /><br />
 
     <button class="btn btn-primary">@Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { style = "text-decoration:none;color:white" })</button>
     <br />
     <br />
-    <table class="table">
-        <tr class="table-primary">
+    <table class="table table-bordered">
+        <tr class="btn-success">
             <th>
                 @Html.DisplayNameFor(model => model.Codigo)
             </th>
@@ -62,7 +61,7 @@
 
         @foreach (var item in Model)
         {
-            <tr class="table-active">
+            <tr class="btn-warning">
                 @if (item.estatus == "Activo")
                 {
                     <td>

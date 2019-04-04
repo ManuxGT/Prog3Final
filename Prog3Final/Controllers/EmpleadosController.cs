@@ -14,21 +14,24 @@ namespace Prog3Final.Controllers
     {
         private DBRecursosHumanos db = new DBRecursosHumanos();
 
-        // GET: Empleados
+       /* // GET: Empleados
         public ActionResult Index()
         {
             var empleados = db.Empleados.Include(e => e.Cargo1);
  
             return View(empleados.ToList());
         }
+        */
+        
 
-        [HttpPost]
+       [HttpGet]
         public ActionResult Index(string nombre, string apellido, string departamento)
         {
             if (nombre!="" && apellido != "" && departamento=="Ninguno")
             {
 
                 var empleados = db.Empleados.Where(d=> d.Nombre==nombre && d.Apellido==apellido);
+                
                 return View(empleados.ToList());
 
             }else if (nombre =="" && apellido!= "" && departamento=="Ninguno")

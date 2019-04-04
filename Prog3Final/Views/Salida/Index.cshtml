@@ -3,41 +3,48 @@
 @{
     ViewBag.Title = "Lista de Inactivos";
 }
+<div class="jumbotron">
+    
+    <h2 class="title text-center">Lista de Usuarios Inactivos</h2>
+    <br /><br />
 
-<h2>Lista de Usuarios Inactivos</h2>
+    <table class="table table-dark table-bordered">
+        <tr class="btn-danger">
+            <th>
+                @Html.DisplayNameFor(model => model.TipoSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empleado.Codigo)
+            </th>
 
-<table class="table table-dark table-bordered"  >
-    <tr class="btn-danger">
-        <th>
-            @Html.DisplayNameFor(model => model.TipoSalida)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Motivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaSalida)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Empleado.Codigo)
-        </th>
-  
-    </tr>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoSalida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Motivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaSalida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empleado.Codigo)
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoSalida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaSalida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleado.Codigo)
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+
+
+
+</div>
