@@ -3,48 +3,54 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="jumbotron">
 
-<h2>Licencia de empleados</h2>
-<br />
-<table class="table table-bordered">
-    <tr class="btn-info">
-        <th>
-            @Html.DisplayNameFor(model => model.Desde)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hasta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Motivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comentarios)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Empleado.Codigo)
-        </th>
-  
-    </tr>
+    <h2 class="card-title text-center">Licencia de empleados</h2>
+    <br />
+    <table class="table table-bordered">
+        <tr class="btn-info">
+            <th>
+                @Html.DisplayNameFor(model => model.Desde)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hasta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empleado.Codigo)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Desde)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hasta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Motivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comentarios)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empleado.Codigo)
-        </td>
-        
-    </tr>
-}
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desde)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hasta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comentarios)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleado.Codigo)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+
+</div>
+
