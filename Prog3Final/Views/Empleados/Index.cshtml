@@ -7,97 +7,62 @@
 
 <h2>Index</h2>
 
-<form action="Index" method="post">
-
-    @Html.TextBox("nombre", "", new { @class = "form-control", @placeholder = "Nombre", style = "display:inline-block" })
-    @Html.TextBox("apellido", "", new { @class = "form-control", @placeholder = "Apellido", style = "display:inline-block" })
-    @Html.DropDownList("departamento", new List<SelectListItem>{
-                    new SelectListItem{Text ="Selecciona un Departamento", Value="Ninguno",Selected=true },
-                    new SelectListItem {Text="Recursos Humanos", Value="2"},
-                    new SelectListItem { Text="Tecnología de la Información", Value="3"},
-                    new SelectListItem { Text="Contabilidad", Value="4"},
-                    new SelectListItem { Text="Administración", Value="5"},
-                    new SelectListItem { Text="Servicio al Cliente", Value="6"}
-                }, new { style= "margin-top:5px;style=inline-block" })
-
-
-    <input style="display:inline-block" type="submit" name="Enviar" value="Buscar" />
-    <p class="text-danger">@ViewBag.ErrorPerezGuzman</p>
-
-
-
-</form>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-
-@if (Model != null)
-{
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Codigo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
-
-
-            <th>
-                @Html.DisplayName("Fecha de Ingreso")
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salario)
-            </th>
-            <th>
-                @Html.DisplayName("Status")
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayName("Fecha de Ingreso")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>     
+    </tr>
+   
+@foreach (var item in Model) {
+    <tr>
+        @if (item.estatus == "Activo")
         {
-            <tr>
-                @if (item.estatus == "Activo")
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Codigo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Apellido)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FechaIngreso)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Salario)
-                    </td>
-                    <td>
-
-                        @Html.DisplayFor(modelItem => item.estatus)
-                    </td>
-
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id })
-                        @Html.ActionLink("Inactivar", "Create", "Salida")
-                    </td>
-                }
-            </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>     
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+         
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+            @Html.ActionLink("Inactivar", "Create", "Salida")
+        </td>
         }
-
-    </table>
-
-
+    </tr>
 }
-else
-{
-    <h5 stlye="margin:auto">No se encontraton resultados</h5>
-}
+
+</table>

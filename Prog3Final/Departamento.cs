@@ -11,12 +11,17 @@ namespace Prog3Final
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Departamento
     {
+        [Key]
         public int id { get; set; }
+
         public string Codigo { get; set; }
+
         public string Nombre { get; set; }
+
         public int Encargado { get; set; }
     
         public virtual Empleado Empleado { get; set; }

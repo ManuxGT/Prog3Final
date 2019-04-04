@@ -1,86 +1,43 @@
 ﻿@model IEnumerable<Prog3Final.SalidaEmpleado>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Inactivos";
 }
 
-<h2>Index</h2>
+<h2>Lista de Usuarios Inactivos</h2>
 
+<table class="table table-dark table-bordered"  >
+    <tr class="btn-danger">
+        <th>
+            @Html.DisplayNameFor(model => model.TipoSalida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaSalida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.Codigo)
+        </th>
+  
+    </tr>
 
-<form action="Index" method="post">
-
-    @Html.DropDownList("mes", new List<SelectListItem>{
-                    new SelectListItem{Text ="Mes", Value="Ninguno",Selected=true },
-                    new SelectListItem {Text="Enero", Value="1"},
-                    new SelectListItem { Text="Febrero", Value="2"},
-                    new SelectListItem { Text="Marzo", Value="3"},
-                    new SelectListItem { Text="Abril", Value="4"},
-                    new SelectListItem { Text="Mayo", Value="5"},
-                    new SelectListItem { Text="Junio", Value="6"},
-                    new SelectListItem { Text="Julio", Value="7"},
-                    new SelectListItem { Text="Agosto", Value="8"},
-                    new SelectListItem { Text="Septiembre", Value="9"},
-                    new SelectListItem { Text="Octubre", Value="10"},
-                    new SelectListItem { Text="Noviembre", Value="11"},
-                    new SelectListItem { Text="Diciembre", Value="12"},
-                }, new { @class="form-control" ,style= "margin-top:5px;display:inline" })
-
-    <input type="submit" name="Enviar" value="Buscar" class="btn" style="display:inline" />
-
-
-</form>
-
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-@if (Model != null)
-{
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoSalida)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Motivo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaSalida)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Empleado.Codigo)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TipoSalida)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Motivo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaSalida)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Empleado.Codigo)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-
-    </table>
-
-
-
-
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoSalida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaSalida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado.Codigo)
+        </td>
+    </tr>
 }
+
+</table>

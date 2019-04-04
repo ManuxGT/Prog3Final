@@ -11,16 +11,34 @@ namespace Prog3Final
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Licencia
     {
+        [Key]
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Se necesita el codigo del empleado")]
         public int IdEmpleado { get; set; }
-        public System.DateTime Desde { get; set; }
-        public System.DateTime Hasta { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Se necesita la fecha de inicio")]
+        public DateTime Desde { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Se necesita la fecha de inicio")]
+        public DateTime Hasta { get; set; }
+
+        [Required(ErrorMessage = "Se necesita un motivo")]
         public string Motivo { get; set; }
+
+        [Required(ErrorMessage = "Se requiere comentarios")]
+        [MaxLength(100, ErrorMessage = "Solo son permitidos 100 Caracteres")]
         public string Comentarios { get; set; }
     
+
         public virtual Empleado Empleado { get; set; }
     }
+
+   
 }

@@ -18,17 +18,22 @@ namespace Prog3Final
 
         public int Id { get; set; }
     
+        
         [Required(ErrorMessage ="Se necesita el Codigo del empleado")]
+
         public int IdEmpleado { get; set; }
 
         [Required(ErrorMessage = "Se necesita el tipo de salida")]
         public string TipoSalida { get; set; }
 
         public string Motivo { get; set; }
+
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Se necesita la fecha de salida")]
         public  DateTime FechaSalida { get; set; }
     
         public virtual Empleado Empleado { get; set; }
     }
+
+ 
 }

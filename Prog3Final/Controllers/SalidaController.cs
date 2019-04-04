@@ -14,7 +14,6 @@ namespace Prog3Final.Controllers
         // GET: Salida
         public ActionResult Index()
         {
-          
             return View(db.SalidaEmpleados.ToList());
         }
 
@@ -45,9 +44,9 @@ namespace Prog3Final.Controllers
         }
 
         // GET: Salida/Edit/5
-        public ActionResult Create(int? id)
+        public ActionResult Create()
         {
-            ViewBag.Encargado = new SelectList(db.Empleados, "Id", "Codigo");
+            ViewBag.PersonList = new SelectList(db.Empleados.Where(m=>m.estatus == "Activo"), "Id", "Nombre");
             return View( );
         }
 
@@ -58,22 +57,22 @@ namespace Prog3Final.Controllers
         {
             try
             {
+                    
                 int CodigoEmpleado = Convert.ToInt32(Request.Form["IdEmpleado"]);
-                var EmpleadoSalida = db.Empleados.Where(m => m.Id == CodigoEmpleado).First();
-                Empleado EmpleadoStatus = db.Empleados.Where(m => m.estatus == "Activo").First();
-
+                var EmpleadoSalida = db.Empleados.Where(m => m.Id == CodigoEmpleado && m.estatus == "Activo").First();
+    
+               
                 int IdSalida = EmpleadoSalida.Id;
+                Empleado EmpleadoStatus = db.Empleados.Where(m => m.estatus == "Activo" && m.Id == salida.IdEmpleado).First();
                 EmpleadoStatus.estatus = "Inactivo";
                 salida.IdEmpleado = IdSalida;
                 db.Entry(EmpleadoStatus).State = EntityState.Modified;
                 db.SalidaEmpleados.Add(salida);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+               return RedirectToAction("Index");
+              
             }
-            catch
-            {
-                
-            }
+            catch { }
             ViewBag.NoResultados = "No hay ningún empleado con este código";
             return View();
         }
