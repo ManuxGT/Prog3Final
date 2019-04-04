@@ -4,11 +4,36 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="jumbotron">
+<div class="jumbotron" style="width:100%">
     <h2 class="title text-center">Lista de los empleados activos</h2>
 
-        <button class="btn btn-primary">@Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { style = "text-decoration:none;color:white" })</button>
+    <br /><br />
+    <form action="Index" method="post">
 
+        @Html.TextBox("nombre", "", new { @class = "form-control", @placeholder = "Nombre", style = "margin-left:2rem;display:inline-block;border: 1px solid black;width:23%" })
+        @Html.TextBox("apellido", "", new { @class = "form-control", @placeholder = "Apellido", style = "margin-left:2rem;display:inline-block;border: 1px solid black;width:23%" })
+        @Html.DropDownList("departamento", new List<SelectListItem>{
+                        new SelectListItem{Text ="Selecciona un Departamento", Value="Ninguno",Selected=true },
+                        new SelectListItem {Text="Recursos Humanos", Value="2"},
+                        new SelectListItem { Text="Tecnología de la Información", Value="3"},
+                        new SelectListItem { Text="Contabilidad", Value="4"},
+                        new SelectListItem { Text="Administración", Value="5"},
+                        new SelectListItem { Text="Servicio al Cliente", Value="6"}
+                    }, new { @class= "form-control",style= "display:inline-block;width:28%;margin-left:2rem;border:1px solid black" })
+
+
+        <input style="margin-left:2rem;display:inline-block;width:9%;" class ="btn btn-default" type="submit" name="Enviar" value="Buscar" />
+        <p class="text-danger">@ViewBag.ErrorPerezGuzman</p>
+
+
+
+    </form>
+
+    <br /><br />
+
+    <button class="btn btn-primary">@Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { style = "text-decoration:none;color:white" })</button>
+    <br />
+    <br />
     <table class="table">
         <tr class="table-primary">
             <th>
@@ -62,7 +87,7 @@
 
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Inactivar", "Create", "Salida")
                     </td>
                 }
