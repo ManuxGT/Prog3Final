@@ -12,6 +12,56 @@
             border:3px solid black;
            
         }
+
+
+
+        .navbar-nav .nav-item ul {
+            display: none;
+        }
+
+        .navbar-nav .nav-item:hover > ul {
+            display: inline-block;
+        }
+
+
+        footer {
+            background: rgb(59,59,59);
+            display: block;
+            width: 100%;
+        }
+
+        .footertext {
+            font-family: Arial, Verdana,Sans;
+            font-size: 0.75rem;
+            margin-bottom: 0;
+            margin-left: 5rem;
+            display: inline;
+        }
+
+
+        .footertext2 {
+            font-family: Arial, Verdana,Sans;
+            font-size: 0.75rem;
+            margin-bottom: 0;
+            margin-left: 0;
+            display: inline;
+        }
+
+        .left {
+            display: inline-block;
+            margin-left: 4rem;
+        }
+
+        .right {
+            vertical-align: top;
+            display: inline-block;
+            padding: 5rem;
+        }
+
+        .tlf {
+            display: inline;
+            margin-right: 0;
+        }
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,36 +70,143 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+        <a href="#"><img height="50rem" src="https://vixicom.com/wp-content/uploads/2016/10/logo-horizontal_white-flat.png" class="navbar-brand"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+
+
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Empleado</a>
+                    <ul style="list-style: none">
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Entrada", "Create", "Empleados", null,new { style = "text-decoration:none;color:white" })</a></li>
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Salida", "Create", "Salida", null,new { style = "text-decoration:none;color:white" })</a></li>
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Activos", "Index", "Empleados", null,new { style = "text-decoration:none;color:white" })</a></li>
+                        <li class=nav-itemd><a class="nav-link" href="#">@Html.ActionLink("Inactivos", "Index", "Salida", null,new { style = "text-decoration:none;color:white" })</a></li>
+                    </ul>
+
+
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cargos</a>
+                    <ul style="list-style: none">
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Crear", "Create", "Cargos", null, new { style = "text-decoration:none;color:white" })</a></li>
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Ver Cargos", "Index", "Cargos", null, new { style = "text-decoration:none;color:white" })</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Departamentos</a>
+                    <ul style="list-style: none">
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Crear", "Create", "Departamentos", null, new { style = "text-decoration:none;color:white" })</a></li>
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Ver Departamentos", "Index", "Departamentos", null, new { style = "text-decoration:none;color:white" })</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Informes</a>
+                    <ul style="list-style: none">
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Nómina", "Index", "Nomina", null, new { style = "text-decoration:none;color:white" })</a></li>
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Licencias", "Index", "Licencias", null, new { style = "text-decoration:none;color:white" })</a></li>
+                        <li class=nav-item><a class="nav-link" href="#">@Html.ActionLink("Permisos", "Index", "Permisos", null, new { style = "text-decoration:none;color:white" })</a></li>
+                        <li class=nav-itemd><a class="nav-link" href="#">@Html.ActionLink("Vacaciones", "Index", "Vacaciones", null, new { style = "text-decoration:none;color:white" })</a></li>
+                    </ul>
+                </li>
+
+
+
+            </ul>
         </div>
-    </div>
+    </nav>
+
+
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
+
+
+
+
+
+        <footer style="padding: 1rem 1rem;">
+
+            <div class="left">
+                <div><img style="margin-top:2rem;" width="300px" src="https://vixicom.com/wp-content/uploads/2016/10/logo-horizontal_white-flat.png"></div>
+                <br>
+                <p style="margin-top: 1rem;" class="footertext">John F. Kennedy</p>
+                <br>
+                <p class="footertext">Esq. Calle Del Carmen, Naco</p>
+                <br>
+                <p class="footertext">Santo Domingo, Dominican Republic</p>
+                <br>
+                <br>
+                <div style="margin-left: 5rem;">
+                    <div class="tlf"><img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/phone-512.png" width=20px></div>
+                    <p class="footertext2"><b>Tel</b>: US +1 985 778 6333</p>
+                </div>
+                <div style="margin-left: 5rem;">
+                    <div class="tlf"><img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/phone-512.png" width=20px></div>
+                    <p class="footertext2"><b>Tel</b>: RD +1 800 759 3908</p>
+                </div>
+
+                <div style="margin-left: 5rem;">
+                    <div class="tlf"><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/email-icon.png" width=20px></div>
+                    <p class="footertext2"><b>E-mail:</b>sales@vixicom.com</p>
+                </div>
+
+            </div>
+
+            <div class="right">
+                <h5>Sign Up Newsletter</h5>
+                <h6>Make sure you don’t miss interesting happenings <br> by joining our newsletter program.</h6>
+                <br>
+                <form>
+                    <input type="text" placeholder="Email" class="form-control" style="width: 35rem;background:black;display:inline;">
+
+                    <input type="submit" class="btn btn-primary" value="Suscribe">
+
+                </form>
+
+            </div>
+        </footer>
+
+
+
+
+
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>
 
 

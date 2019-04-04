@@ -4,25 +4,30 @@
     ViewBag.Title = "Calculo de nominas";
 }
 
- 
+<h2>Lista de nominas</h2>
 
 <p>
     @using (Html.BeginForm("Index", "Nomina", FormMethod.Get))
     {
-        <h3 class="modal-title">Busquedas</h3>
 
-        <b>Busqueda por:</b>
-        @Html.RadioButton("Busqueda", "Año",true) <text>Año</text>
-        @Html.RadioButton("Busqueda", "Mes") <text>Mes</text>
-        @Html.TextBox("valor")
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-left:30%">
+            <label class="btn btn-primary active">
+                @Html.RadioButton("Busqueda", "Año", true) Año
+            </label>
+            <label class="btn btn-primary ">
+                @Html.RadioButton("Busqueda", "Mes")  Mes
+            </label>
+               @Html.TextBox("valor"  )
+        </div>
+     
         <input type="submit" class="btn btn-success" value="Buscar" />
-
+        <button type="button" class="btn btn-light" onclick="location.href='@Url.Action("Index","Nomina")'">Limpiar</button>
     }
 </p>
 
 
-<table class="table">
-    <tr>
+<table class="table table-hover">
+    <tr class="btn-primary">
         <th>
             @Html.DisplayNameFor(model => model.Año)
         </th>
@@ -32,7 +37,6 @@
         <th>
             @Html.DisplayNameFor(model => model.MontoTotal)
         </th>
-        <th></th>
     </tr>
     @if (Model.Count() == 0)
     {
@@ -44,7 +48,7 @@
     {
         foreach (var item in Model)
         {
-            <tr>
+            <tr class="table-actives">
                 <td>
                     @Html.DisplayFor(modelItem => item.Año)
                 </td>
