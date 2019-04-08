@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Prog3Final.Nomina>
+
+@{
+    ViewBag.Title = "Calculo de nominas";
+}
+<div class="jumbotron">
+    <h2 class="title text-center"  style="color:black">Lista de nominas</h2>
+
+    <p>
+        @using (Html.BeginForm("Index", "Nomina", FormMethod.Get))
+        {
+
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-left:30%">
+                <label class="btn btn-primary active">
+                    @Html.RadioButton("Busqueda", "Año", true) Año
+                </label>
+                <label class="btn btn-primary ">
+                    @Html.RadioButton("Busqueda", "Mes")  Mes
+                </label>
+                @Html.TextBox("valor")
+            </div>
+
+            <input type="submit" class="btn btn-success" value="Buscar" />
+            <button type="button" class="btn btn-light" onclick="location.href='@Url.Action("Index","Nomina")'">Limpiar</button>
+        }
+    </p>
+
+
+    <table class="table table-active">
+        <tr class="btn-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Año)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoTotal)
+            </th>
+        </tr>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td class="text-danger">Intente filtrar nuevamente su nomina</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr class="btn-outline-secondary" style="color:black" >
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Año)
+                    </td>
+                    <td>
+                        @switch (item.Mes)
+                        {
+                            case 1:
+                                <p>Enero</p>
+                                break;
+                            case 2:
+                                <p>Febrero</p>
+                                break;
+                            case 3:
+                                <p>Marzo</p>
+                                break;
+                            case 4:
+                                <p>Abril</p>
+                                break;
+                            case 5:
+                                <p>Mayo</p>
+                                break;
+                            case 6:
+                                <p>Junio</p>
+                                break;
+                            case 7:
+                                <p>Julio</p>
+                                break;
+                            case 8:
+                                <p>Agosto</p>
+                                break;
+                            case 9:
+                                <p>Septiembre</p>
+                                break;
+                            case 10:
+                                <p>Octubre</p>
+                                break;
+                            case 11:
+                                <p>Noviembre</p>
+                                break;
+                            case 12:
+                                <p>Diciembre</p>
+                                break;
+
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MontoTotal)$
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+
+</div>
+<

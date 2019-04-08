@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Prog3Final.Cargo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2 class="title text-center">Lista de Cargos</h2>
+    <br />
+    <br />
+    <button class="btn btn-outline-primary">@Html.ActionLink("Añadir nuevo cargo", "Create")</button>
+    <br />
+    <br />
+
+    <table class="table table-bordered">
+        <tr class="btn-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th style="text-align:center">Opciones</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="table table-active" style="color:black">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td style="text-align:center">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

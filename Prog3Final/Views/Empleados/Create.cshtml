@@ -1,0 +1,115 @@
+﻿@model Prog3Final.Empleado
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <div class="jumbotron" style="width:67%;margin:auto">
+
+            <img style="display:block;margin:auto;" width="500px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCGLVpp-ycPm_PH7vXq0OnssHx9w1-A9_qs7eU2KnZrsWrsHPl" />
+            <br />
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group" style="margin-bottom:2rem;display:inline-block;width:100%;">
+                @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10" style="display:block">
+                    @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control", style = "width:150%;border:1px solid black;display:inline" } })
+                    @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:2rem;display:inline-block;width:45%">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", style = "border:1px solid black;display:block" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:2rem;display:inline-block;width:45%">
+                @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control", style = "border:1px solid black;display:block" } })
+                    @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:2rem;">
+                @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", style = "border:1px solid black;" } })
+                    @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:2rem;display:inline-block;width:40%">
+                @Html.Label("Género", new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.genero, new List<SelectListItem>{
+                        new SelectListItem {Text="Masculino", Value="Masculino",Selected=true},
+                        new SelectListItem { Text="Femenino", Value="Femenino"}
+                    }, new { style="margin-top:5px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.genero, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group" style="margin-bottom:2rem;display:inline-block;width:40%">
+                @Html.Label("Status", htmlAttributes: new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.estatus, new List<SelectListItem>{
+                       new SelectListItem {Text="Activo", Value="Activo",Selected=true }
+
+                   }, new { style="margin-top:5px", @class="form-control"})
+                </div>
+            </div>
+
+
+            <div class="form-group" style="margin-bottom:2rem;display:inline-block;width:48%">
+                @Html.LabelFor(model => model.Departamento, htmlAttributes: new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+
+                    @Html.DropDownListFor(model => model.Departamento, (SelectList)ViewBag.Departamentos, new { @class = "btn btn-secondary dropdown-toggle" })
+                    @Html.ValidationMessageFor(model => model.Departamento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:2rem;display:inline-block;width:48%">
+                @Html.LabelFor(model => model.Cargo, htmlAttributes: new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Cargo, (SelectList)ViewBag.Cargo, new { @class = "btn btn-secondary dropdown-toggle" })
+                    @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:2rem;">
+                @Html.Label("Fecha de Ingreso", new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.FechaIngreso, new { @class = "form-control", @type = "date", style = "border:1px solid black;" })
+                    @Html.ValidationMessageFor(model => model.FechaIngreso, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:2rem;">
+                @Html.LabelFor(model => model.Salario, htmlAttributes: new { @class = "control-label col-md-2", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Salario, new { @class = "form-control", @type = "number", style = "border:1px solid black;" })
+                    @Html.ValidationMessageFor(model => model.Salario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                    <button style="margin-top:2rem;;display:inline-block;" class="btn btn-outline-secondary">@Html.ActionLink("Volver a la lista", "Index")</button>
+                    <input type="submit" value="Crear" class="btn btn-success" style="display:inline-block;margin-top:2.3rem;margin-left:40%;width:25%"/>       
+        </div>
+        </div>
+        
+}
+
+<div>
+
+</div>
+
+ 

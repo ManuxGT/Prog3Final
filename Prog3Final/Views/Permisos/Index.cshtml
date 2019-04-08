@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Prog3Final.Permiso>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron">
+
+
+    <h2>Lista de permisos</h2>
+
+    <p>
+        @using (Html.BeginForm("Index", "Permisos", FormMethod.Get))
+        {
+            <h4 class="modal-title", style="text-align:center">filtre los permisos</h4> <br />
+            <div class="btn-group btn-group-toggle" style="padding-left:30%">
+                <label class="btn btn-primary active">
+                    @Html.RadioButton("Busqueda", "IdEmpleado", true)Id Empleado
+                </label>
+                @Html.TextBox("valor")
+            </div>
+            <input type="submit" value="Buscar" class="btn btn-success" />
+            <button type="button" class="btn btn-light" onclick="location.href='@Url.Action("Index","Permisos")'">Limpiar</button>
+
+        }
+    </p>
+    <table class="table table-bordered">
+        <tr class="btn-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desde)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hasta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empleado.Codigo)
+            </th>
+        </tr>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td class="text-danger">No hay resultados con este valor</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+
+                <tr class="table-actives">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdEmpleado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Desde)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hasta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comentarios)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empleado.Codigo)
+                    </td>
+
+                </tr>
+            }
+        }
+    </table>
+
+
+
+
+</div>

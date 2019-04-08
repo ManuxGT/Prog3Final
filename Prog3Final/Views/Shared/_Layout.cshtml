@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		body {
+			width: 100wh;
+			height: 90vh;
+			background: #000000;
+			/* fallback for old browsers */
+			background: linear-gradient(-45deg,rgba(0,0,0,1) 50%, rgba(128,129,128,1) 72%, rgba(192,192,192,1) 100%);
+			background-size: 400% 400%;
+			-webkit-animation: Gradient 7s ease infinite;
+			-moz-animation: Gradient 7s ease infinite;
+			animation: Gradient 8s ease infinite;
+		}
+
+		@@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+		.form-control {
+			border: 3px solid black;
+		}
+
+		.navbar-nav .nav-item ul {
+			display: none;
+		}
+
+		.navbar-nav .nav-item:hover > ul {
+			display: inline-block;
+		}
+
+		footer {
+			background: rgb(59, 59, 59);
+			display: block;
+			width: 100%;
+		}
+
+		.footertext {
+			font-family: Arial, Verdana, Sans;
+			font-size: 0.75rem;
+			margin-bottom: 0;
+			margin-left: 5rem;
+			display: inline;
+		}
+
+		.footertext2 {
+			font-family: Arial, Verdana, Sans;
+			font-size: 0.75rem;
+			margin-bottom: 0;
+			margin-left: 0;
+			display: inline;
+		}
+
+		.left {
+			display: inline-block;
+			margin-left: 4rem;
+		}
+
+		.right {
+			vertical-align: top;
+			display: inline-block;
+			padding: 5rem;
+		}
+
+		.tlf {
+			display: inline;
+			margin-right: 0;
+		}
+	</style>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recuersos Humanos Vixicom</title>
+	@Styles.Render("~/Content/css") 
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+		<a href="~/Home/Index"><img height="50rem" src="https://vixicom.com/wp-content/uploads/2016/10/logo-horizontal_white-flat.png" class="navbar-brand"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav mr-auto">
+
+				<li class="nav-item">
+
+					<a class="nav-link" href="~/Home/Index"> Inicio <span class="sr-only">(current)</span></a>
+
+				</li>
+
+
+				<li class="nav-item">
+					<a class="nav-link" href="">Empleado</a>
+					<ul style="list-style: none">
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Entrada", "Create", "Empleados", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Salida", "Create", "Salida", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Activos", "Index", "Empleados", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-itemd><a class="nav-link" href="">@Html.ActionLink("Inactivos", "Listado", "Salida", null, new { style = "text-decoration:none;color:white" })</a></li>
+					</ul>
+
+
+
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="">Cargos</a>
+					<ul style="list-style: none">
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Crear", "Create", "Cargos", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Ver Cargos", "Index", "Cargos", null, new { style = "text-decoration:none;color:white" })</a></li>
+
+					</ul>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="#">Departamentos</a>
+					<ul style="list-style: none">
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Crear", "Create", "Departamentos", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Ver Departamentos", "Index", "Departamentos", null, new { style = "text-decoration:none;color:white" })</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="#">Crear Informes</a>
+					<ul style="list-style: none">
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Nómina", "VistaNomina", "Nomina", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Licencias", "Create", "Licencias", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Permisos", "Create", "Permisos", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-itemd><a class="nav-link" href="">@Html.ActionLink("Vacaciones", "Create", "Vacaciones", null, new { style = "text-decoration:none;color:white" })</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="#">Informes</a>
+					<ul style="list-style: none">
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Nómina", "Index", "Nomina", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Licencias", "Index", "Licencias", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Permisos", "Index", "Permisos", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-itemd><a class="nav-link" href="">@Html.ActionLink("Vacaciones", "Index", "Vacaciones", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-item><a class="nav-link" href="">@Html.ActionLink("Entradas por mes", "Entrada", "Empleados", null, new { style = "text-decoration:none;color:white" })</a></li>
+						<li class=nav-itemd><a class="nav-link" href="">@Html.ActionLink("Salidas por mes", "Listado", "Salida", null, new { style = "text-decoration:none;color:white" })</a></li>
+					</ul>
+				</li>
+
+
+
+			</ul>
+		</div>
+	</nav>
+
+
+
+	<div class="container body-content">
+		@RenderBody()
+
+		<footer style="padding: 1rem 1rem;">
+
+			<div class="left">
+				<div><img style="margin-top:2rem;" width="300px" src="https://vixicom.com/wp-content/uploads/2016/10/logo-horizontal_white-flat.png"></div>
+				<br>
+				<p style="margin-top: 1rem;" class="footertext">Instituto Tecnológico de las Américas (ITLA)</p>
+				<br>
+				<p class="footertext">Autopista Las Américas, Km. 27, PCSD, </p>
+				<br>
+				<p class="footertext">La Caleta, Boca Chica.</p>
+				<br>
+				<br>
+				<div style="margin-left: 5rem;">
+					<div class="tlf"><img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/phone-512.png" width=20px></div>
+					<p class="footertext2"><b>Tel</b>: 809-738-4852</p>
+				</div>
+				<div style="margin-left: 5rem;">
+					<div class="tlf"><img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/phone-512.png" width=20px></div>
+					<p class="footertext2"><b>Fax</b>: 809-738-4800</p>
+				</div>
+
+				<div style="margin-left: 5rem;">
+					<div class="tlf"><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/email-icon.png" width=20px></div>
+					<p class="footertext2"><b>E-mail:</b>20174847@itla.edu.do</p><br />
+					<div class="tlf"><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/email-icon.png" width=20px></div>
+					<p class="footertext2"><b>E-mail:</b>20174847@itla.edu.do</p>
+				</div>
+
+			</div>
+
+ 
+		</footer>
+
+
+
+
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+</body>
+
+
+</html>

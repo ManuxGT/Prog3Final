@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Prog3Final.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="jumbotron" style="width:100%">
+    <h2 class="title text-center">Lista de los empleados activos</h2>
+    <br /><br />
+    @using (Html.BeginForm("Index", "Empleados", FormMethod.Get))
+    {
+
+        @Html.TextBox("nombre", "", new { @class = "form-control", @placeholder = "Nombre", style = "margin-left:2rem;display:inline-block;border: 1px solid black;width:23%" })
+        @Html.TextBox("apellido", "", new { @class = "form-control", @placeholder = "Apellido", style = "margin-left:2rem;display:inline-block;border: 1px solid black;width:23%" })
+        @Html.DropDownList("departamento", new List<SelectListItem>{
+                        new SelectListItem{Text ="Selecciona un Departamento", Value="Ninguno",Selected=true },
+                        new SelectListItem {Text="Recursos Humanos", Value="2"},
+                        new SelectListItem { Text="Tecnología de la Información", Value="3"},
+                        new SelectListItem { Text="Contabilidad", Value="4"},
+                        new SelectListItem { Text="Administración", Value="5"},
+                        new SelectListItem { Text="Servicio al Cliente", Value="6"}
+                    }, new { @class= "form-control",style= "display:inline-block;width:28%;margin-left:2rem;border:1px solid black" })
+
+
+        <input style="margin-left:2rem;display:inline-block;width:9%;" class="btn btn-default" type="submit" name="Enviar" value="Buscar" />
+        <p class="text-danger">@ViewBag.ErrorPerezGuzman</p>
+    }
+
+    <br />
+    <br />
+    <table class="table table-bordered">
+        <tr class="btn-success">
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayName("Fecha de Ingreso")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+            <th style="column-span">
+                @Html.DisplayName("Status")
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayName("Opciones")
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="btn-warning">
+                @if (item.estatus == "Activo")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaIngreso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.estatus)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Inactivar", "Create", "Salida")
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+

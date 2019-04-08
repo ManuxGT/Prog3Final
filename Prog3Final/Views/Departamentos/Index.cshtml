@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Prog3Final.Departamento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+
+<div class="jumbotron">
+    <h2 class="title text-center">Listado de Departamentos</h2>
+    <br />
+    <p>
+        <button class="btn btn-outline-warning">@Html.ActionLink("Añadir nuevo departamento","Create")</button>
+    </p>
+    <table class="table table-bordered">
+        <tr class="btn-success">
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empleado.Codigo)
+            </th>
+            <th class="text-center">
+                <p>Opciones</p>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="btn-info">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleado.Codigo)
+                </td>
+                <td class="text-center">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id }) 
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

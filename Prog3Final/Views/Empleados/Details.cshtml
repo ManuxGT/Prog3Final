@@ -1,0 +1,78 @@
+﻿@model Prog3Final.Empleado
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="jumbotron">
+
+    <h2 class="text-center">Detalles de Empleado</h2>
+    <hr />
+    <dl class="list-group" style="text-align:center;color:black;font-size:20px">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.genero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.genero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaIngreso)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo1.Codigo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cargo1.Codigo)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) 
+</p>

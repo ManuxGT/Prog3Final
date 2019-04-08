@@ -1,0 +1,25 @@
+[1mdiff --git a/Prog3Final/Controllers/HomeController.cs b/Prog3Final/Controllers/HomeController.cs[m
+[1mindex 0cd0059..c37ed9b 100644[m
+[1m--- a/Prog3Final/Controllers/HomeController.cs[m
+[1m+++ b/Prog3Final/Controllers/HomeController.cs[m
+[36m@@ -23,7 +23,7 @@[m [mnamespace Prog3Final.Controllers[m
+         public ActionResult Contact()[m
+         {[m
+             ViewBag.Message = "Your contact page.";[m
+[31m-[m
+[32m+[m[32m            var algo = "nose";[m
+             return View();[m
+         }[m
+     }[m
+[1mdiff --git a/Prog3Final/Views/Home/Index.cshtml b/Prog3Final/Views/Home/Index.cshtml[m
+[1mindex 32e1dd9..a0c68f7 100644[m
+[1m--- a/Prog3Final/Views/Home/Index.cshtml[m
+[1m+++ b/Prog3Final/Views/Home/Index.cshtml[m
+[36m@@ -28,4 +28,6 @@[m
+         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>[m
+         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>[m
+     </div>[m
+[32m+[m
+[32m+[m[32m    <h1>We are the world</h1>[m
+ </div>[m
+\ No newline at end of file[m
